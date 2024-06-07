@@ -11,27 +11,27 @@ public class ClienteService {
         clienteDao = new ClienteDao();
     }
 
-    public boolean inserir(Cliente cliente) {
+    public void inserir(Cliente cliente) {
         if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty()) {
-            return false;
+            return;
         }
         clienteDao.inserir(cliente);
-        return true;
+        
     }
 
-    public boolean excluir(Cliente cliente) {
+    public void excluir(Cliente cliente) {
         if (cliente.getId() == 0) {
-            return false;
+            return;
         }
         clienteDao.excluir(cliente);
-        return true;
+        
     }
 
-    public boolean editar(Cliente cliente) {
+    public void editar(Cliente cliente) {
         if (cliente.getNome().isEmpty() || cliente.getCpf().isEmpty()) {
-            return false;
+            return;
         }
         clienteDao.editar(cliente);
-        return true;
+        
     }
 }

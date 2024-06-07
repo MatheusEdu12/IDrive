@@ -13,7 +13,7 @@ public class Conexao {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/aula_java", "root", "root");
+                    "jdbc:mysql://localhost:3306/aula_java", "root", "root"); // Ajeitar para o nosso banco
 
             System.out.println("Conexão criada com sucesso!");
         }

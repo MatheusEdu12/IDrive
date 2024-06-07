@@ -11,27 +11,27 @@ public class VeiculoService {
         veiculoDao = new VeiculoDao();
     }
 
-    public boolean inserir(Veiculo veiculo) {
+    public void inserir(Veiculo veiculo) {
         if (veiculo.getMarca().isEmpty() || veiculo.getModelo().isEmpty() || veiculo.getPlaca().isEmpty()) {
-            return false;
+            return;
         }
         veiculoDao.inserir(veiculo);
-        return true;
+        
     }
 
-    public boolean excluir(Veiculo veiculo) {
+    public void excluir(Veiculo veiculo) {
         if (veiculo.getId() == 0) {
-            return false;
+            return;
         }
         veiculoDao.excluir(veiculo);
-        return true;
+        
     }
 
-    public boolean editar(Veiculo veiculo) {
+    public void editar(Veiculo veiculo) {
         if (veiculo.getMarca().isEmpty() || veiculo.getModelo().isEmpty() || veiculo.getPlaca().isEmpty()) {
-            return false;
+            return;
         }
         veiculoDao.editar(veiculo);
-        return true;
+        
     }
 }

@@ -11,27 +11,27 @@ public class LocacaoService {
         locacaoDao = new LocacaoDao();
     }
 
-    public boolean inserir(Locacao locacao) {
+    public void inserir(Locacao locacao) {
         if (locacao.getCliente() == null || locacao.getVeiculo() == null) {
-            return false;
+            return;
         }
         locacaoDao.inserir(locacao);
-        return true;
+        
     }
 
-    public boolean excluir(Locacao locacao) {
+    public void excluir(Locacao locacao) {
         if (locacao.getId() == 0) {
-            return false;
+            return;
         }
         locacaoDao.excluir(locacao);
-        return true;
+        
     }
 
-    public boolean editar(Locacao locacao) {
+    public void editar(Locacao locacao) {
         if (locacao.getCliente() == null || locacao.getVeiculo() == null) {
-            return false;
+            return;
         }
         locacaoDao.editar(locacao);
-        return true;
+        
     }
 }
