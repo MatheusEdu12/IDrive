@@ -1,5 +1,7 @@
 package com.idrive.service;
 
+import java.sql.ResultSet;
+
 import com.idrive.dao.VeiculoDao;
 import com.idrive.models.Veiculo;
 
@@ -33,5 +35,19 @@ public class VeiculoService {
         }
         veiculoDao.editar(veiculo);
         
+    }
+
+    public void quantidadeVeiculoPorMarca(Veiculo veiculo) {
+        if (veiculo.getMarca().isEmpty()) {
+            return;
+        }
+        veiculoDao.quantidadeVeiculoPorMarca(veiculo);     
+    }
+
+    public boolean isDisponivel(Veiculo veiculo){
+        if (veiculo.getId() <= 0) {
+            throw new IllegalArgumentException();
+        }
+        return veiculoDao.isDisponivel(veiculo);
     }
 }

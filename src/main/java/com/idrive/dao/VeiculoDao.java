@@ -85,5 +85,43 @@ public class VeiculoDao {
             ex.printStackTrace();
         }
     }
+
+    public ResultSet quantidadeVeiculoPorMarca(Veiculo veiculo) {
+        try {
+            String SQL = "SELECT COUNT(*) FROM veiculo WHERE marca = ?";
+
+            ps = conexao.getConn().prepareStatement(SQL);
+            ps.setString(1, veiculo.getMarca());
+
+            ResultSet rs = ps.executeQuery();
+            
+            ps.close();
+
+            return rs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null; 
+    } 
+
+    public boolean isDisponivel(Veiculo veiculo) {
+        try {
+            String SQL = "SELECT COUNT(*) FROM LOCACAO WHERE id_veiculo = ? AND NOW() BETWEEN dataInicio AND dataTermino";
+    
+            ps = conexao.getConn().prepareStatement(SQL);
+            ps.setInt(1, veiculo.getId());
+    
+            ResultSet rs = ps.executeQuery();
+            rs.next(); 
+            int count = rs.getInt(1); 
+    
+            ps.close();
+    
+            return count > 0; 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; 
+        }
+    }
     
 }
