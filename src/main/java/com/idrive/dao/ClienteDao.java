@@ -22,8 +22,7 @@ public class ClienteDao {
                     .createStatement().executeQuery("SELECT * FROM cliente");
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        
+        }   
         return null;
     }
     
@@ -84,5 +83,24 @@ public class ClienteDao {
             ex.printStackTrace();
         }
     }
+
+    public ResultSet mostrarDadosCliente(Cliente cliente) {
+        try {
+            String SQL = "SELECT * FROM cliente WHERE id = ?";
+
+            ps = conexao.getConn().prepareStatement(SQL);
+            ps.setInt(1, cliente.getId());
+
+            ResultSet rs = ps.executeQuery();
+
+            ps.close();
+
+            return rs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null; 
+    }
+    
     
 }

@@ -20,7 +20,7 @@ public class ClienteService {
     }
 
     public void excluir(Cliente cliente) {
-        if (cliente.getId() == 0) {
+        if (cliente.getId() <= 0) {
             return;
         }
         clienteDao.excluir(cliente);
@@ -33,5 +33,12 @@ public class ClienteService {
         }
         clienteDao.editar(cliente);
         
+    }
+
+    public void mostrarCliente(Cliente cliente) {
+        if (cliente.getId() <= 0) {
+            return;
+        }
+        clienteDao.mostrarDadosCliente(cliente);
     }
 }
